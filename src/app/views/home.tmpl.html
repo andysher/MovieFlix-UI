@@ -1,0 +1,18 @@
+<div class="container">
+    <h2 class="subtitle text-center">IMDB Top Rated </h2>
+    <hr>
+    <div class="row">
+        <h3 class="subtitle">Top Rated Movies</h3>
+        <hr>
+        <div ng-repeat="movie in homeVm.movies | filter: {Type:'movie'}">
+            <movie-card movie='movie'></movie-card>
+        </div>
+    </div>
+    <div class="row">
+    <h3 class="subtitle">Top Rated Series</h3>
+        <hr>
+        <div ng-repeat="movie in homeVm.movies | filter: {Type:'series'}">
+            <movie-card movie='movie'></movie-card>
+        </div>
+    </div>
+</div>

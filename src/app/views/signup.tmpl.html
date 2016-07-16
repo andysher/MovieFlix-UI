@@ -1,0 +1,73 @@
+<div class="container">
+    <h2 class="subtitle"></h2>
+    <hr>
+    <div class="jumbotron">
+        <h1 class="display-3 text-center">New User Sign Up..!</h1>
+        <p class="lead">
+            <div class="row">
+                <div class=" col-md-6 col-md-offset-3">
+                    <hr class="m-y-2">
+                     <p class="text-center">Fill the info. below.. <i>(all fields are required)</i></p>
+                    <form name="signupForm" ng-submit="signupVm.newSignup()" novalidate>
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" class="form-control" name="firstName" id="firstName"
+                                   ng-model="signupVm.credntl.firstName" placeholder="e.g. Donald or Hillary" required minlength="3"/>
+                            <div ng-messages="signupForm.firstName.$error" class="error" ng-if="signupForm.firstName.$dirty">
+                                <p ng-message="required">User firstname cannot be empty</p>
+                                <p ng-message="minlength">User firstname must more than 2 chars</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" class="form-control" name="lastName" id="lastName"
+                                   ng-model="signupVm.credntl.lastName" placeholder="e.g. Trump or Clinton" required minlength="3"/>
+                            <div ng-messages="signupForm.lastName.$error" class="error" ng-if="signupForm.lastName.$dirty">
+                                <p ng-message="required">User lastName cannot be empty</p>
+                                <p ng-message="minlength">User lastName must more than 2 chars</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" name="email" id="email"
+                                   ng-model="signupVm.credntl.email" placeholder="example@domain.com" required/>
+                            <div ng-messages="signupForm.email.$error" class="error" ng-if="signupForm.email.$dirty">
+                                <p ng-message="required">User email cannot be empty</p>
+                                <p ng-message="email">User email is invalid</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password" id="password"
+                                   ng-model="signupVm.credntl.password" placeholder="Enter user password here." required minlength="3"/>
+                            <div ng-messages="signupForm.password.$error" class="error" ng-if="signupForm.password.$dirty">
+                                <p ng-message="required">User password connot be empty</p>
+                                <p ng-message="minlength">User password must more than 2 chars</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password_very">Confirm Password</label>
+                            <input type="password" class="form-control" name="password_very" id="password_very"
+                                   ng-model="signupVm.password_very" placeholder="Enter user password here." required minlength="3" required data-password-verify="signupVm.credntl.password"/>
+                            <div ng-messages="signupForm.password_very.$error" class="error" ng-if="signupForm.password_very.$dirty">
+                                <p ng-message="required">User password connot be empty</p>
+                                <p ng-message="minlength">User password must more than 2 chars</p>
+                                <p ng-message="passwordVerify">Password fields don't match</p>
+                            </div>
+                        </div>
+                        <hr class="m-y-2">
+                        <div class="col-lg-6">
+                            <p><a ng-href="" >Clear All Fields</a>
+                        </div>
+                        <div class="col-lg-2 col-lg-offset-3">
+                            <p class="lead">
+                                <button type="submit" class="btn btn-primary btn-lg" ng-disabled="signupForm.$invalid">
+                                    <i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;Sign Up</button>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </p>
+    </div>
+</div>

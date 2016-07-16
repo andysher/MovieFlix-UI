@@ -1,0 +1,333 @@
+<div class="container">
+    <h2 class="subtitle">Editing&nbsp;:&nbsp;{{movieDetailsVm.movie.Title}}</h2>
+    <hr>
+    <div class="">
+        <p>
+            <form class="edit-label" name="editForm" ng-submit="movieDetailsVm.updateMovie(movieDetailsVm.movie.id)" novalidate>
+
+                <div class="col-sm-6 ">
+                    <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-3  ">
+                                    <label for="title">Title : </label>
+                                </div>
+                                <div class="col-sm-9  ">
+                                    <input type="text" class="form-control" name="title" id="title"
+                                                   ng-model="movieDetailsVm.movie.Title" placeholder=""
+                                                   required minlength="3"/>
+                                    <div ng-messages="editForm.title.$error" class="error"
+                                         ng-if="editForm.title.$dirty">
+                                        <p ng-message="required">Movie title cannot be empty</p>
+                                        <p ng-message="minlength">Movie itle must more than 2 chars</p>
+                                    </div>
+                                </div>
+                             </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-3  ">
+                                <label for="plot">Plot : </label>
+                            </div>
+                            <div class="col-sm-9  ">
+                                <textarea type="text" class="form-control" name="plot" id="plot" rows="5"
+                                       ng-model="movieDetailsVm.movie.Plot" placeholder=""
+                                       required minlength="3"></textarea>
+                                <div ng-messages="editForm.plot.$error" class="error"
+                                     ng-if="editForm.plot.$dirty">
+                                    <p ng-message="required">Movie plot cannot be empty</p>
+                                    <p ng-message="minlength">Movie plot must more than 2 chars</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-3  ">
+                                <label for="director">Director : </label>
+                            </div>
+                            <div class="col-sm-9  ">
+                                <input type="text" class="form-control" name="director" id="director"
+                                       ng-model="movieDetailsVm.movie.Director" placeholder=""
+                                       required minlength="3"/>
+                                <div ng-messages="editForm.director.$error" class="error"
+                                     ng-if="editForm.director.$dirty">
+                                    <p ng-message="required">Director cannot be empty</p>
+                                    <p ng-message="minlength">Director must more than 2 chars</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-3  ">
+                                <label for="actor">Actors : </label>
+                            </div>
+                            <div class="col-sm-9  ">
+                                <textarea type="text" class="form-control" name="actor" id="actor"
+                                       ng-model="movieDetailsVm.movie.Actors" placeholder=""
+                                       required minlength="3"></textarea>
+                                <div ng-messages="editForm.actor.$error" class="error"
+                                     ng-if="editForm.actor.$dirty">
+                                    <p ng-message="required">Actors cannot be empty</p>
+                                    <p ng-message="minlength">Actors must more than 2 chars</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-3  ">
+                                <label for="writer">Writer : </label>
+                            </div>
+                            <div class="col-sm-9  ">
+                                <textarea type="text" class="form-control" name="writer" id="writer" rows="3"
+                                     ng-model="movieDetailsVm.movie.Writer" placeholder=""
+                                     required minlength="3"></textarea>
+                                <div ng-messages="editForm.writer.$error" class="error"
+                                     ng-if="editForm.writer.$dirty">
+                                    <p ng-message="required">Writer cannot be empty</p>
+                                    <p ng-message="minlength">Writer must more than 2 chars</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-3  ">
+                                <label for="released">Released : </label>
+                            </div>
+                            <div class="col-sm-9  ">
+                                <input type="text" class="form-control" name="released" id="released"
+                                       ng-model="movieDetailsVm.movie.Released" placeholder=""
+                                       required minlength="3"/>
+                                <div ng-messages="editForm.released.$error" class="error"
+                                     ng-if="editForm.released.$dirty">
+                                    <p ng-message="required">Released cannot be empty</p>
+                                    <p ng-message="minlength">Released must more than 2 chars</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-3  ">
+                                <label for="genre">Genre : </label>
+                            </div>
+                            <div class="col-sm-9  ">
+                                <input type="text" class="form-control" name="genre" id="genre"
+                                       ng-model="movieDetailsVm.movie.Genre" placeholder=""
+                                       required minlength="3"/>
+                                <div ng-messages="editForm.genre.$error" class="error"
+                                     ng-if="editForm.genre.$dirty">
+                                    <p ng-message="required">Genre cannot be empty</p>
+                                    <p ng-message="minlength">Genre must more than 2 chars</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 ">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-3  ">
+                                <label for="imdbid">imdbID : </label>
+                            </div>
+                            <div class="col-sm-3  ">
+                                <input type="text" class="form-control" name="imdbid" id="imdbid"
+                                       ng-model="movieDetailsVm.movie.imdbID" placeholder=""
+                                       required minlength="3"/>
+                                <div ng-messages="editForm.imdbid.$error" class="error"
+                                     ng-if="editForm.imdbid.$dirty">
+                                    <p ng-message="required">imdbID cannot be empty</p>
+                                    <p ng-message="minlength">imdbID must more than 2 chars</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-3  ">
+                                <label for="imdbrating">imdbRating : </label>
+                            </div>
+                            <div class="col-sm-3  ">
+                                <input type="text" class="form-control" name="imdbrating" id="imdbrating"
+                                       ng-model="movieDetailsVm.movie.imdbRating" placeholder=""
+                                       required minlength="1"/>
+                                <div ng-messages="editForm.imdbrating.$error" class="error"
+                                     ng-if="editForm.imdbrating.$dirty">
+                                    <p ng-message="required">imdbRating cannot be empty</p>
+                                    <p ng-message="minlength">imdbRating must more than 1 chars</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3  ">
+                            <label for="metascore">Metascore : </label>
+                        </div>
+                        <div class="col-sm-3  ">
+                            <input type="text" class="form-control" name="metascore" id="metascore"
+                                   ng-model="movieDetailsVm.movie.Metascore" placeholder=""
+                                   required minlength="1">
+                            <div ng-messages="editForm.metascore.$error" class="error"
+                                 ng-if="editForm.metascore.$dirty">
+                                <p ng-message="required">Metascore cannot be empty</p>
+                                <p ng-message="minlength">Metascore must more than 1 chars</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-3  ">
+                            <label for="rated">Rated : </label>
+                        </div>
+                        <div class="col-sm-3  ">
+                            <input type="text" class="form-control" name="rated" id="rated"
+                                   ng-model="movieDetailsVm.movie.Rated" placeholder=""
+                                   required minlength="1">
+                            <div ng-messages="editForm.rated.$error" class="error"
+                                 ng-if="editForm.rated.$dirty">
+                                <p ng-message="required">Rated cannot be empty</p>
+                                <p ng-message="minlength">Rated must more than 1 chars</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3  ">
+                            <label for="year">Year : </label>
+                        </div>
+                        <div class="col-sm-3  ">
+                            <input type="text" class="form-control" name="year" id="year"
+                                   ng-model="movieDetailsVm.movie.Year" placeholder=""
+                                   required minlength="3">
+                            <div ng-messages="editForm.year.$error" class="error"
+                                 ng-if="editForm.year.$dirty">
+                                <p ng-message="required">Year cannot be empty</p>
+                                <p ng-message="minlength">Year must more than 2 chars</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-3  ">
+                            <label for="type">Type : </label>
+                        </div>
+                        <div class="col-sm-3  ">
+                            <input type="text" class="form-control" name="type" id="type"
+                                   ng-model="movieDetailsVm.movie.Type" placeholder=""
+                                   required minlength="3">
+                            <div ng-messages="editForm.type.$error" class="error"
+                                 ng-if="editForm.type.$dirty">
+                                <p ng-message="required">Type cannot be empty</p>
+                                <p ng-message="minlength">Type must more than 2 chars</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-3 ">
+                                <label for="imdbvotes">imdbVotes : </label>
+                            </div>
+                            <div class="col-sm-9  ">
+                                <input type="text" class="form-control" name="imdbvotes" id="imdbvotes"
+                                       ng-model="movieDetailsVm.movie.imdbVotes" placeholder=""
+                                       required minlength="3"/>
+                                <div ng-messages="editForm.imdbvotes.$error" class="error"
+                                     ng-if="editForm.imdbvotes.$dirty">
+                                    <p ng-message="required">imdbVotes cannot be empty</p>
+                                    <p ng-message="minlength">imdbVotes must more than 2 chars</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-3  ">
+                                <label for="runtime">Runtime : </label>
+                            </div>
+                            <div class="col-sm-9  ">
+                                <input type="text" class="form-control" name="runtime" id="runtime"
+                                       ng-model="movieDetailsVm.movie.Runtime" placeholder=""
+                                       required minlength="3"/>
+                                <div ng-messages="editForm.runtime.$error" class="error"
+                                     ng-if="editForm.runtime.$dirty">
+                                    <p ng-message="required">Runtime cannot be empty</p>
+                                    <p ng-message="minlength">Runtime must more than 2 chars</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-3  ">
+                                <label for="language">Language : </label>
+                            </div>
+                            <div class="col-sm-9  ">
+                                <input type="text" class="form-control" name="language" id="language"
+                                       ng-model="movieDetailsVm.movie.Language" placeholder=""
+                                       required minlength="3"/>
+                                <div ng-messages="editForm.language.$error" class="error"
+                                     ng-if="editForm.language.$dirty">
+                                    <p ng-message="required">Language cannot be empty</p>
+                                    <p ng-message="minlength">Language must more than 2 chars</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-3  ">
+                                <label for="country">Country : </label>
+                            </div>
+                            <div class="col-sm-9  ">
+                                <input type="text" class="form-control" name="country" id="country"
+                                       ng-model="movieDetailsVm.movie.Country" placeholder=""
+                                       required minlength="3"/>
+                                <div ng-messages="editForm.country.$error" class="error"
+                                     ng-if="editForm.country.$dirty">
+                                    <p ng-message="required">Country cannot be empty</p>
+                                    <p ng-message="minlength">Country must more than 2 chars</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-3 ">
+                                <label for="awards">Awards : </label>
+                            </div>
+                            <div class="col-sm-9 ">
+                                <input type="text" class="form-control" name="awards" id="awards"
+                                       ng-model="movieDetailsVm.movie.Awards" placeholder=""
+                                       required minlength="3"/>
+                                <div ng-messages="editForm.awards.$error" class="error"
+                                     ng-if="editForm.awards.$dirty">
+                                    <p ng-message="required">Awards cannot be empty</p>
+                                    <p ng-message="minlength">Awards must more than 2 chars</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-3">
+                                <label for="poster">Poster URL: </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <textarea type="text" class="form-control" name="poster" id="poster" rows="4"
+                                       ng-model="movieDetailsVm.movie.Poster" placeholder=""
+                                       required minlength="3"></textarea>
+                                <div ng-messages="editForm.poster.$error" class="error"
+                                     ng-if="editForm.poster.$dirty">
+                                    <p ng-message="required">Poster cannot be empty</p>
+                                    <p ng-message="minlength">Poster must more than 2 chars</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="m-y-2">
+                <div class="col-sm-3 col-lg-offset-8">
+                    <p class="lead">
+                        <a ng-href="#/detail/{{movieDetailsVm.movie.id}}" role="button" class="btn btn-danger">
+                            <i class="fa fa fa-ban" aria-hidden="true"></i>&nbsp;Cancel
+                        </a>
+                        <button type="submit" class="btn btn-success" ng-disabled="editForm.$invalid">
+                            <i class="fa fa-wrench" aria-hidden="true"></i>&nbsp;Update
+                        </button>
+                    </p>
+                </div>
+            </form>
+        </p>
+    </div>
+</div>

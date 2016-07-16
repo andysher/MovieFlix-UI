@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="movieflix">
+<head>
+    <meta charset="UTF-8">
+    <title>MovieFlix</title>
+    <!-- bower:css -->
+    <!-- endinject -->
+
+    <!-- vendor:css -->
+    <!-- endinject -->
+
+    <!-- inject:css -->
+    <!-- endinject -->
+
+    <!-- app:css -->
+    <!-- endinject -->
+</head>
+<body>
+<header>
+    <div class="container">
+        <!--navigation-->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#/home">MovieFlix</a>
+                </div>
+                <div class="row">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a ng-href="#/all">Home</a>
+                        </li>
+                        <li>
+                            <a ng-href="#/browse/movies">Movies</a>
+                        </li>
+                        <li>
+                            <a ng-href="#/browse/series">TV-Series</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav pull-right"
+                        ng-show="isUserLoggedIn" ng-controller="LoginController as loginVm">
+                        <li>
+                            <a ng-href="" ng-show="loginVm.checkUserType()">
+                                Admin
+                            </a>
+                        </li>
+                        <li>
+                            <a ng-href="#/" ng-click="loginVm.logout()"> Logout </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- / navigation -->
+            </div>
+        </nav>
+    </div>
+</header>
+
+<section ng-view>
+
+</section>
+<footer class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <hr class="m-y-2">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3"><p class="content">Copyright &copy; MovieFlix, Inc.</p></div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- bower:js -->
+<!-- endinject -->
+
+<!-- vendor:js -->
+<!-- endinject -->
+
+<!-- inject:js -->
+<!-- endinject -->
+
+<!-- app:js -->
+<!-- endinject -->
+</body>
+</html>

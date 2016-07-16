@@ -1,0 +1,30 @@
+.info-strip {
+    margin-top: -10px;
+    padding-bottom: 10px;
+}
+
+.info-detail{
+    color: rgba(62, 8, 0, 0.55);
+}
+
+.info-detail span {
+    font-weight: 500;
+    color: #5e001f;
+}
+.info-detail a > span {
+    font-weight: 500;
+    color: white;
+    background-color: rgba(198, 93, 0, 0.48);
+}
+
+.avgRating{
+    margin-left: 30%;
+}
+
+.admin-btn {
+    border: none;
+}
+
+.edit-label {
+    text-align: right;
+}

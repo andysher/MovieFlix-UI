@@ -1,0 +1,150 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{movieDetailsVm.movie.Title}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 info-strip">
+            <span class="label label-default" uib-tooltip="Year" tooltip-placement="bottom">{{movieDetailsVm.movie.Year}}</span>
+            <span class="label label-danger" uib-tooltip="Rating" tooltip-placement="bottom">Rated : {{movieDetailsVm.movie.Rated}}</span>
+            <a class="btn btn-primary btn-xs" role="button"
+               ng-href="http://www.imdb.com/title/{{movieDetailsVm.movie.imdbID}}" uib-tooltip="IMBD Rating" tooltip-placement="bottom">
+                <i class="fa fa-tachometer fa-lg" aria-hidden="true"></i>&nbsp;<span class="badge">{{movieDetailsVm.movie.imdbRating}}</span>
+            </a>
+                <span class="label label-warning"  uib-tooltip="IMDB Votes" tooltip-placement="bottom">
+                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                    {{movieDetailsVm.movie.imdbVotes}}
+                </span>&nbsp;
+                <span class="label label-pill label-success" uib-tooltip="Meta Score" tooltip-placement="bottom">
+                    <i class="fa fa-envira" aria-hidden="true"></i>
+                    {{movieDetailsVm.movie.Metascore}}
+                </span>
+            <div  ng-show="movieDetailsVm.checkUser()">
+            <a class="btn btn-default admin-btn pull-right" ng-click="movieDetailsVm.deleteMov()" uib-tooltip="Delete" tooltip-placement="bottom">
+                <i class="fa fa-trash-o fa-lg fa-fw" title="Delete" aria-hidden="true"></i>
+            </a>
+                &nbsp;
+                <a class="btn btn-default admin-btn pull-right" ng-href="#/movie/edit/{{movieDetailsVm.movie.id}}" uib-tooltip="Edit" tooltip-placement="bottom">
+                    <i class="fa fa-bars fa-lg fa-fw" aria-hidden="true" title="Skip to main navigation"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row well card-effect">
+        <div class="col-lg-2 thumb">
+            <img class="img-responsive" ng-src="{{movieDetailsVm.movie.Poster}}" alt="">
+            <uib-rating class="avgRating" ng-model="movieDetailsVm.avgRate" max="5" read-only="true"
+                        on-leave="overStar = null" uib-tooltip="Avg. User Rating" tooltip-placement="bottom"
+                        titles="['1','2','3']" aria-labelledby="default-rating"></uib-rating>
+        </div>
+        <div class="col-lg-8 info-detail">
+            <div class="row">
+                <p class="plot">
+                    <i>"{{movieDetailsVm.movie.Plot}}"</i>
+                </p>
+
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <p><span> Realeased on</span> : {{movieDetailsVm.movie.Released}}</p>
+                        <p><span>Runtime</span> : {{movieDetailsVm.movie.Runtime}}</p>
+                        <p><span>Starring</span> : {{movieDetailsVm.movie.Actors}}</p>
+                        <p><span>Director</span> : {{movieDetailsVm.movie.Director}}</p>
+                        <p><span>Genre</span> : {{movieDetailsVm.movie.Genre}}</p>
+                        <p><span>Type</span> : {{movieDetailsVm.movie.Type}}
+                        <a class="col-md-offset-6" ng-href="http://www.imdb.com/title/{{movieDetailsVm.movie.imdbID}}">
+                            <span class="badge">IMBD Link</span>
+                        </a>
+                        </p>
+                    </div>
+                    <div class="col-lg-4">
+                        <p><span>Writer</span> : {{movieDetailsVm.movie.Writer}}</p>
+                        <p><span>Language</span> : {{movieDetailsVm.movie.Language}}</p>
+                        <p><span>Country</span> : {{movieDetailsVm.movie.Country}}</p>
+                        <p><span>Awards</span> : {{movieDetailsVm.movie.Awards}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row well-sm">
+        <div class="card-effect">
+            <form name="addCommentForm" ng-submit="movieDetailsVm.postComment()" novalidate>
+                <div class="col-sm-8 col-sm-offset-2">
+                    <div class="panel panel-white post panel-shadow">
+                        <div class="post-heading">
+                            <div class="pull-left image">
+                                <img ng-src="images/user_avatar.jpg" class="img-circle avatar" alt="user profile image">
+                            </div>
+                            <div class="pull-left meta">
+                                <div class="title h5">
+                                    <a><b>{{movieDetailsVm.thisUser.firstName}}&nbsp;
+                                        {{movieDetailsVm.thisUser.lastName}}</b></a><i> write a comment.</i>
+                                </div>
+                                <h6 class="text-muted time">Now</h6>
+                                <uib-rating ng-model="movieDetailsVm.newComment.rating" max="5" read-only="false"
+                                            titles="['1','2','3']" on-leave="overStar = null"
+                                            uib-tooltip="Your Rating" tooltip-placement="bottom"
+                                            aria-labelledby="default-rating"></uib-rating>
+                            </div>
+                            <div class="pull-right">
+                                <i class="fa fa-comments-o fa-2x" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="post-description">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                    <textarea class="form-control" cols="100" type="text" name="comment" id="comment"
+                                           ng-model="movieDetailsVm.newComment.comment"
+                                              placeholder="Your comment goes here...(max. 500 chars)"
+                                              required maxlength="500" minlength="3"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-default btn-lg pull-right comment-btn"
+                                            uib-tooltip="Click to post your comment." tooltip-placement="top"
+                                            ng-disabled="addCommentForm.$invalid">
+                                        <i class="fa fa-pencil-square-o fa-3x"></i>
+                                    </button>
+                                    </div>
+                                    <div ng-messages="addCommentForm.comment.$error" class="error" ng-if="addCommentForm.comment.$dirty">
+                                        <p ng-message="maxlength">User password must less than 500 chars</p>
+                                        <p ng-message="minlength">User password must more than 3 chars</p>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="comment-section">
+        <div class="row" ng-repeat="review in movieDetailsVm.reviews | orderBy:'created':true">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="panel panel-white post panel-shadow">
+                    <div class="post-heading">
+                        <div class="pull-left image">
+                            <img ng-src="images/user_avatar.jpg" class="img-circle avatar" alt="user profile image">
+                        </div>
+                        <div class="pull-left meta">
+                            <div class="title h5">
+                                <a><b>{{review.user.firstName}}&nbsp;{{review.user.lastName}}</b></a>
+                                <i>made a comment.</i>
+                            </div>
+                            <h6 class="text-muted time"><time am-time-ago="review.created"></time></h6>
+                            <uib-rating ng-model="review.rating" max="5" read-only="true"
+                                        on-leave="overStar = null"
+                                        titles="['1','2','3']" aria-labelledby="default-rating"></uib-rating>
+                        </div>
+                        <div class="pull-right">
+                            <i class="fa fa-comments fa-2x" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="post-description">
+                        <p>{{review.comment}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

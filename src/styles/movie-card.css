@@ -1,0 +1,28 @@
+.moviecard p {
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.moviecard img {
+    width:100%;
+    height: 100%;
+}
+
+.card-fixed-size {
+    height:380px;
+    border-color: rgba(51, 122, 183, 0);
+}
+
+a.thumbnail:hover {
+    height:380px;
+    border-color: rgba(255, 249, 243, 0);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.43);
+}
+
+.moviecard{
+    margin-top: 20px;
+}
+
+.caption {
+    margin-top: -20px;
+}
